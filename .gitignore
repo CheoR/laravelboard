@@ -2,3 +2,6 @@ mysql
 .DS_Store
 .idea
 .env
+
+project_notes.md
+
