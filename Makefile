@@ -6,7 +6,7 @@ build:
 down:
 	docker compose down
 rebuild:
-	docker compose up -d --build
+	docker compose up -d --build --force-recreate
 stop:
 	docker compose stop
 up:

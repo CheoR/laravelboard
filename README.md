@@ -25,3 +25,10 @@ to stop containers
 	$ make stop // down containers
 ```
 
+## Commands
+
+```zsh
+
+	// connect to db from container
+	mysql -u workgigs -p
+```
