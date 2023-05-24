@@ -1,4 +1,4 @@
-# Loadboard
+# Laravelboard
 
 Getting reacquainted with Laravel.
 
@@ -9,20 +9,19 @@ Getting reacquainted with Laravel.
 If starting project
 
 ```
-	make setup
+	$ make setup
 ```
 
 if project already started
 
 ```
-	make up
+	$ make up
 ```
 
 to stop containers
 
 ```
-	make down
-	// or
-	make stop
+	$ make down // down and destroy containers
+	$ make stop // down containers
 ```
 
