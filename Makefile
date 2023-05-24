@@ -5,6 +5,8 @@ build:
 	docker compose run --rm composer create-project laravel/laravel .
 down:
 	docker compose down
+rebuild:
+	docker compose up -d --build
 stop:
 	docker compose stop
 up:
