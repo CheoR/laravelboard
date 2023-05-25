@@ -23,6 +23,22 @@ services:
     networks:
       - laravel
 
+  phpmyadmin:
+    image: phpmyadmin:latest # 5.2.1-fpm-alpine
+    ports:
+      - "${PHP_ADMIN}:80"
+    depends_on:
+      - mysql
+    environment:
+      # - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - PMA_USER=${PMA_USER}
+      - PMA_PASSWORD=${PMA_PASSWORD}
+    links:
+      - mysql
+    networks:
+      - laravel
+
   mysql:
     image: mariadb:10.6.13-focal
     restart: unless-stopped
@@ -34,8 +50,8 @@ services:
       MYSQL_USER: "${MYSQL_USER}"
       MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+      # SERVICE_TAGS: dev
+      # SERVICE_NAME: mysql
     networks:
       - laravel
 
