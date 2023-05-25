@@ -9,6 +9,24 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    public function authenticate(Request $request) {
+        $formFields = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if(auth()->attempt($formFields)) {
+            $request->session()->regenerate();
+
+            return redirect('/')
+                ->with('message', 'Hola!');
+        }
+
+        return back()
+            ->withErrors(['email' => 'Invalid Credentials'])
+            ->onlyInput('email');
+    }
+
     public function create() {
         return view('users.register');
     }
@@ -28,6 +46,10 @@ class UserController extends Controller
 
         return redirect('/')
             ->with('message', 'Thank you for signing up! BARK!');
+    }
+
+    public function login() {
+        return view('users.login');
     }
 
     public function logout(Request $request) {
