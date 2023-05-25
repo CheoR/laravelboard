@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoadController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +16,10 @@ use App\Http\Controllers\LoadController;
 */
 
 Route::get('/', [LoadController::class, 'index']);
+
+Route::get('/register', [UserController::class, 'create']);
+//   ->middleware('guest');
+
+Route::post('/users', [UserController::class, 'store']);
+Route::post('/logout', [UserController::class, 'logout'])
+  ->middleware('auth');
